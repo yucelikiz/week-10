@@ -33,3 +33,20 @@ WHERE first_name IN ('Penelope', 'Nick', 'Ed');
 ## Question 3
 SELECT * FROM film
 WHERE rental_rate IN (0.99, 2.99, 3.99) AND replacement_cost IN (12.99, 15.99, 28.99);
+
+## Assesment 3
+### Question 1
+SELECT country FROM country 
+WHERE country LIKE 'A%a';
+
+### Question 2
+SELECT country FROM country 
+WHERE country LIKE '%_____n';
+
+### Question 3
+SELECT title FROM film 
+WHERE title ILIKE 't%t%t%t%' OR title ILIKE '%t%t%t%t%';
+
+### Question 4
+SELECT * FROM film
+WHERE title LIKE 'C%' AND length > 90 AND rental_rate = 2.99;
