@@ -1,1 +1,69 @@
+## 1- test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
 
+CREATE TABLE employee (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	birthday DATE,
+	email VARCHAR(100) 
+	
+);
+
+## 2- Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 50 adet veri ekleyelim.
+
+insert into employee (id, name, birthday, email) values (1, 'Eartha Van de Vlies', '1981/04/16', 'evan0@hostgator.com');
+insert into employee (id, name, birthday, email) values (2, 'Wilma Parry', '1963/03/11', 'wparry1@latimes.com');
+insert into employee (id, name, birthday, email) values (3, 'Myrta Sives', null, 'msives2@forbes.com');
+insert into employee (id, name, birthday, email) values (4, 'Sharon Stang-Gjertsen', '1911/04/21', 'sstanggjertsen3@moonfruit.com');
+insert into employee (id, name, birthday, email) values (5, 'Clark Yeomans', '1947/10/17', null);
+insert into employee (id, name, birthday, email) values (6, 'Vania Crombie', '1907/06/01', 'vcrombie5@1688.com');
+insert into employee (id, name, birthday, email) values (7, 'Dannel Cayley', '1983/06/27', 'dcayley6@redcross.org');
+insert into employee (id, name, birthday, email) values (8, 'Bernardine Alldis', '1945/06/12', null);
+...
+
+## 3- Sütunların her birine göre diğer sütunları güncelleyecek 5 adet UPDATE işlemi yapalım.
+
+UPDATE employee
+SET name = 'Yücel İKİZ'
+WHERE id = 19;
+
+UPDATE employee
+SET birthday = '1992-08-21'
+WHERE id = 19
+RETURNING *;
+
+UPDATE employee
+SET email = 'yucelikiz@gmail.com'
+WHERE id = 19
+RETURNING *;
+
+UPDATE employee
+SET name = 'Unknown Hacker'
+WHERE id > 49
+RETURNING *;
+
+UPDATE employee
+SET email = 'unkown@hacker.com'
+WHERE id BETWEEN 40 AND 49
+RETURNING *;
+
+## 4- Sütunların her birine göre ilgili satırı silecek 5 adet DELETE işlemi yapalım.
+
+DELETE FROM employee
+WHERE name = 'Yücel İKİZ'
+RETURNING *;
+
+DELETE FROM employee
+WHERE birthday = '1963-03-11'
+RETURNING *;
+
+DELETE FROM employee
+WHERE id > 51
+RETURNING *;
+
+DELETE FROM employee
+WHERE email IS NULL
+RETURNING *;
+
+DELETE FROM employee
+WHERE birthday IS NULL
+RETURNING *;
